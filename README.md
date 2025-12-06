@@ -99,3 +99,11 @@ sudo docker run -d \
   -v /home/solovieva/qdrant:/qdrant/storage \
   -v /home/solovieva/qdrant/config:/qdrant/config \
   qdrant/qdrant:latest
+```
+
+### LLM
+```bash
+pip install vllm==0.11.2
+VLLM_USE_DEEP_GEMM=0 nohup vllm serve ai-sage/GigaChat3-10B-A1.8B   --dtype "auto" --max-model-len=32000 --max-num-seqs=64 --host 0.0.0.0 --port 11434 --enable-auto-tool-choice         --tool-call-parser deepseek_v3 --gpu-memory-utilization 0.7 &
+```
+
